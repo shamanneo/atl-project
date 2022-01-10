@@ -18,6 +18,10 @@ LRESULT CMainWnd::OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHand
 
 LRESULT CMainWnd::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) 
 {
+    PAINTSTRUCT ps ; 
+    HDC hDC = BeginPaint(&ps) ; 
+
+    EndPaint(&ps) ; 
     return 0 ; 
 }
 
