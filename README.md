@@ -3,7 +3,7 @@
 Default Document-View Architecture desktop application with ATL.
 
     class CView : public CWindowImpl<CView>
-        {
+    {
         public :
             CView() ; 
             virtual ~CView() ; 
