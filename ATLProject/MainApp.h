@@ -1,10 +1,10 @@
 #pragma once
-#include "MainWnd.h"
+#include "MainFrame.h"
 
 class CMainApp
 {
     private :
-        CMainWnd m_MainWnd ; 
+        CMainFrame m_MainFrame ; 
     public :
         CMainApp() ; 
         ~CMainApp() ; 

@@ -33,7 +33,7 @@
     <ClInclude Include="atlsupport.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainWnd.h">
+    <ClInclude Include="MainFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainApp.h">
@@ -47,7 +47,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainWnd.cpp">
+    <ClCompile Include="MainFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MainApp.cpp">

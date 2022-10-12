@@ -1,14 +1,14 @@
 #pragma once
 
-class CMainWnd : public CWindowImpl<CMainWnd> 
+class CMainFrame : public CWindowImpl<CMainFrame> 
 {
     public :
-        CMainWnd() ; 
-        ~CMainWnd() ; 
+        CMainFrame() ; 
+        ~CMainFrame() ; 
     public :
-        DECLARE_WND_CLASS(_T("ATLProject"))
+        DECLARE_WND_CLASS(_T("Main"))
 
-        BEGIN_MSG_MAP(CMainWnd)
+        BEGIN_MSG_MAP(CMainFrame)
             MESSAGE_HANDLER(WM_COMMAND, OnCommand) 
             MESSAGE_HANDLER(WM_PAINT, OnPaint) 
             MESSAGE_HANDLER(WM_DESTROY, OnDestroy) 

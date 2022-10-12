@@ -19,9 +19,10 @@ int CMainApp::Run(HINSTANCE hInstance, int nCmdShow)
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_ATLPROJECT)) ;
     MSG msg ;
 
-    m_MainWnd.Create(NULL, NULL, _T("ATLProject"), WS_OVERLAPPEDWINDOW, 0) ; 
-    m_MainWnd.ShowWindow(nCmdShow) ; 
-    m_MainWnd.UpdateWindow() ; 
+    m_MainFrame.Create(NULL, NULL, _T("ATLProject"), WS_OVERLAPPEDWINDOW, 0) ; 
+    m_MainFrame.ShowWindow(nCmdShow) ; 
+    m_MainFrame.CenterWindow() ; 
+    m_MainFrame.UpdateWindow() ; 
 
     while (::GetMessage(&msg, nullptr, 0, 0)) // main message loop.
     {
