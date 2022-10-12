@@ -24,7 +24,7 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ATLProject.h">
+    <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
@@ -45,7 +45,7 @@
     <ClInclude Include="TestView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Test2View.h">
+    <ClInclude Include="Document.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,7 +68,7 @@
     <ClCompile Include="TestView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Test2View.cpp">
+    <ClCompile Include="Document.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

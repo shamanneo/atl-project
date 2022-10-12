@@ -1,10 +1,9 @@
 #pragma once
+#include "Document.h"
 #include "View.h"
 
 class CTestView : public CView 
 {
-    private :
-
     public :
         CTestView() ; 
         virtual ~CTestView() override ;

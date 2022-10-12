@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "TestView.h"
-#include "Test2View.h"
 #include "MainFrame.h"
 
 CMainFrame::CMainFrame()
@@ -19,7 +18,7 @@ LRESULT CMainFrame::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHan
     CRect rc ;
     GetClientRect(&rc) ; 
     CRect rcView { 0, 0, rc.right / 4, rc.bottom } ; 
-    m_apView.Attach(new CTest2View) ; 
+    m_apView.Attach(new CTestView) ; 
     m_apView->Create(
         m_hWnd, 
         rcView, 

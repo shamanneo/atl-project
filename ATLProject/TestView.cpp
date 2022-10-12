@@ -13,5 +13,6 @@ CTestView::~CTestView()
 
 void CTestView::Draw(HDC hDC) 
 {
-    int i = 0 ; 
+    CString str ; 
+    TextOut(hDC, 100, 100, str, str.GetLength()) ; 
 } 
