@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "TestView.h"
 #include "MainFrame.h"
 
 CMainFrame::CMainFrame()
@@ -9,6 +10,22 @@ CMainFrame::CMainFrame()
 CMainFrame::~CMainFrame()
 {
 
+}
+
+LRESULT CMainFrame::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled)
+{
+    constexpr DWORD dwStyle = WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS ; 
+    CRect rc ;
+    GetClientRect(&rc) ; 
+    CRect rcView { 0, 0, rc.right / 4, rc.bottom } ; 
+    m_apView.Attach(new CTestView) ; 
+    m_apView->Create(
+        m_hWnd, 
+        rcView, 
+        NULL, 
+        dwStyle, 
+        WS_EX_CLIENTEDGE) ; 
+    return 0 ; 
 }
 
 LRESULT CMainFrame::OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) 

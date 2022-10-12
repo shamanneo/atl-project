@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "MainApp.h"
-#include "ATLProject.h"
+#include "main.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE /*hPrevInstance*/,
@@ -10,6 +10,5 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     CMainApp &MainApp = CMainApp::GetInstance() ; 
     int nResult = MainApp.Run(hInstance, nCmdShow) ;  
     CMainApp::Release() ;
-
     return nResult ; 
 }
