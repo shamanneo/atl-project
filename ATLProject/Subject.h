@@ -1,13 +1,14 @@
 #pragma once
+#include "View.h"
 
 class ISubject
 {
     public :
-        ISubject() ;
-        virtual ~ISubject() ; 
+        ISubject() { }  ;
+        virtual ~ISubject() { } ; 
     public :
-        virtual void RegisterObserver() = 0 ;
-        virtual void UnregisterObserver() = 0 ; 
-        virtual void UpdateObserver() = 0 ;
+        virtual void RegisterView(CAutoPtr<CView> apView) = 0 ;
+        virtual void UnregisterView(CAutoPtr<CView> apView) = 0 ; 
+        virtual void UpdateView() = 0 ;
 } ;
 

@@ -17,3 +17,4 @@ class CView : public CWindowImpl<CView>
         virtual void Draw(HDC hDC) ;
 } ;
 
+

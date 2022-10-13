@@ -8,10 +8,34 @@ CDocument::CDocument()
 
 CDocument::~CDocument()
 {
-
+    if(!m_views.IsEmpty())
+    {
+        m_views.RemoveAll() ; 
+    }
 }
 
-void CDocument::Do(CString &str)
+void CDocument::RegisterView(CAutoPtr<CView> apView) 
 {
-    return ; 
+    m_views.AddTail(apView) ; 
+}
+
+void CDocument::UnregisterView(CAutoPtr<CView> apView) 
+{
+    if(!m_views.IsEmpty())
+    {
+        POSITION pos = m_views.Find(apView) ; 
+        if(pos != NULL)
+        {
+            m_views.RemoveAt(pos) ; 
+        }
+    }
+}
+
+void CDocument::UpdateView() 
+{
+    POSITION pos = m_views.GetHeadPosition() ; 
+    while(pos != NULL)
+    {
+        m_views.GetNext(pos)->Draw(NULL) ; 
+    }
 }

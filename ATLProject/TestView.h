@@ -11,3 +11,4 @@ class CTestView : public CView
         virtual void Draw(HDC hDC) override ; 
 } ;
 
+

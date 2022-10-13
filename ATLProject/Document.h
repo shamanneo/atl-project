@@ -1,14 +1,17 @@
 #pragma once
 #include "View.h"
+#include "Subject.h"
 
-class CDocument
+class CDocument : public ISubject
 {
     private :
-        CAutoPtr<CView> m_apView ; 
+        CAtlList<CAutoPtr<CView>> m_views ; 
     public :
         CDocument() ; 
         ~CDocument() ; 
     public :
-        void Do(CString &str) ; 
+        virtual void RegisterView(CAutoPtr<CView> apView) override ; 
+        virtual void UnregisterView(CAutoPtr<CView> apView) override ; 
+        virtual void UpdateView() override ; 
 } ;
 
