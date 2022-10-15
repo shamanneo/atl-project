@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "TestView.h"
 
-CTestView::CTestView() 
+CTestView::CTestView(CContent &Content) 
+    : m_Content(Content)
 {
 
 } 
@@ -13,6 +14,6 @@ CTestView::~CTestView()
 
 void CTestView::Draw(HDC hDC) 
 {
-    CString str ; 
-    TextOut(hDC, 100, 100, str, str.GetLength()) ; 
+    CString strContent = _T("Hello, World") ;  
+    TextOut(hDC, 30, 30, strContent, strContent.GetLength()) ; 
 } 

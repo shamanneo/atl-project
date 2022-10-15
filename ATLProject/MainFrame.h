@@ -1,10 +1,11 @@
 #pragma once
+#include "Document.h"
 #include "View.h"
 
 class CMainFrame : public CWindowImpl<CMainFrame> 
 {
     private :
-        CAutoPtr<CView> m_apView ; 
+        CView m_currentView ; 
     public :
         CMainFrame() ; 
         ~CMainFrame() ; 
@@ -22,5 +23,8 @@ class CMainFrame : public CWindowImpl<CMainFrame>
         LRESULT OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
         LRESULT OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
         LRESULT OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
+    public :
+       virtual void OnFinalMessage(HWND hWnd) override ; 
+        
 } ;
 

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Document.h"
+#include "MainApp.h"
 #include "View.h"
 
 CView::CView()

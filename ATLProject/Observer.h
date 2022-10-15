@@ -1,9 +1,9 @@
 #pragma once
 
-class IObserver
+class CObserver
 {
     public :
-        virtual ~IObserver() { } ; 
+        virtual ~CObserver() { } ; 
     public :
         virtual void Update() = 0 ; 
 } ;

@@ -14,13 +14,15 @@ CDocument::~CDocument()
     }
 }
 
-void CDocument::RegisterView(CAutoPtr<CView> apView) 
+void CDocument::RegisterView(CView *pView) 
 {
+    CAutoPtr<CView> apView { pView } ; 
     m_views.AddTail(apView) ; 
 }
 
-void CDocument::UnregisterView(CAutoPtr<CView> apView) 
+void CDocument::UnregisterView(CView *pView) 
 {
+    CAutoPtr<CView> apView { pView } ; 
     if(!m_views.IsEmpty())
     {
         POSITION pos = m_views.Find(apView) ; 
@@ -36,6 +38,31 @@ void CDocument::UpdateView()
     POSITION pos = m_views.GetHeadPosition() ; 
     while(pos != NULL)
     {
-        m_views.GetNext(pos)->Draw(NULL) ; 
+        HWND hWnd = m_views.GetNext(pos)->m_hWnd ; 
+        ::InvalidateRect(hWnd, nullptr, TRUE) ; 
+        ::UpdateWindow(hWnd) ; 
+    }
+}
+
+void CDocument::LoadFileContent()
+{
+    constexpr DWORD nBufSize = 30 ; 
+    DWORD nBytesRead = 10 ; 
+    CAtlFile file ; 
+    char szBuffer[nBufSize] { } ; 
+    HRESULT hResult = file.Create(_T("contents"), GENERIC_READ, NULL, OPEN_EXISTING) ;
+    if(hResult == S_OK)
+    {
+        hResult = file.Read(szBuffer, nBufSize, nBytesRead) ; 
+        if(hResult == S_OK)
+        {
+            CString strText { szBuffer } ;
+            m_Content.SetText(strText) ;
+            UpdateView() ; 
+        }
+    }
+    else 
+    {
+        ATLASSERT(0) ; 
     }
 }

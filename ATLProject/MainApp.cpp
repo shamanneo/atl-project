@@ -33,6 +33,11 @@ int CMainApp::Run(HINSTANCE hInstance, int nCmdShow)
     return static_cast<int>(msg.wParam) ; 
 }
 
+CDocument &CMainApp::GetMainDocument()
+{
+    return m_mainDocument ; 
+}
+
 //      static 
 
 CMainApp &CMainApp::GetInstance() 
@@ -52,3 +57,5 @@ void CMainApp::Release()
         g_pMainApp = nullptr ; 
     }
 }
+
+

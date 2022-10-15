@@ -6,3 +6,4 @@
 #include <atlwin.h>
 #include <atltypes.h>
 #include <atlcoll.h>
+#include <atlfile.h>
