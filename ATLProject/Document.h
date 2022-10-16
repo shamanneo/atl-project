@@ -6,23 +6,29 @@
 class CDocument : public CSubject
 {
     private :
-        CAtlList<CView *> m_Views ; 
+        CAtlMap<CString, CView *> m_Views ; 
         CContent m_Content ; 
     public :
         CDocument() ; 
         ~CDocument() ; 
     public :
-        virtual void RegisterView(CView *pView) override ; 
-        virtual void UnregisterView(CView *pView) override ; 
+        virtual void RegisterView(const CString &strKey, CView *pView) override ; 
+        virtual void UnregisterView(const CString &strKey) override ; 
         virtual void UpdateView() override ; 
     public :
         void LoadFileContent() ; 
         inline CContent &GetContent() ;
+        inline CView *GetView(const CString &strKey) ; 
 } ;
 
 inline CContent &CDocument::GetContent() 
 {
     return m_Content ; 
+}
+
+inline CView *CDocument::GetView(const CString &strKey)
+{
+    return m_Views[strKey] ; 
 }
 
 

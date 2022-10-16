@@ -14,29 +14,22 @@ CDocument::~CDocument()
     }
 }
 
-void CDocument::RegisterView(CView *pView) 
+void CDocument::RegisterView(const CString &strKey, CView *pView) 
 {
-    m_Views.AddTail(pView) ; 
+    m_Views.SetAt(strKey, pView) ; 
 }
 
-void CDocument::UnregisterView(CView *pView) 
+void CDocument::UnregisterView(const CString &strKey) 
 {
-    if(!m_Views.IsEmpty())
-    {
-        POSITION pos = m_Views.Find(pView) ; 
-        if(pos != NULL)
-        {
-            m_Views.RemoveAt(pos) ; 
-        }
-    }
+    m_Views.RemoveKey(strKey) ; 
 }
 
 void CDocument::UpdateView() 
 {
-    POSITION pos = m_Views.GetHeadPosition() ; 
+    POSITION pos = m_Views.GetStartPosition() ; 
     while(pos != NULL)
     {
-        HWND hWnd = m_Views.GetNext(pos)->m_hWnd ; 
+        HWND hWnd = m_Views.GetNextValue(pos)->m_hWnd ; 
         ::InvalidateRect(hWnd, nullptr, TRUE) ; 
         ::UpdateWindow(hWnd) ; 
     }

@@ -30,48 +30,25 @@ LRESULT CMainFrame::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHan
         DXL_WS_CHILDWINDOW,
         WS_EX_CLIENTEDGE
     ) ; 
-    MainDoc.RegisterView(pClassView) ; 
+    MainDoc.RegisterView(_T("ClassView"), pClassView) ; 
     CView *pTerminalView = new CTerminalView { MainDoc.GetContent() } ; 
     pTerminalView->Create(
         m_hWnd,
         rcView,
         _T("TerminalView"),
-        DXL_WS_CHILDWINDOW | ~WS_VISIBLE,
+        DXL_WS_CHILDWINDOW,
         WS_EX_CLIENTEDGE
     ) ; 
-    MainDoc.RegisterView(pTerminalView) ; 
+    MainDoc.RegisterView(_T("TerminalView"), pTerminalView) ; 
     CView *pErrorView = new CErrorView { MainDoc.GetContent() } ; 
     pErrorView->Create(
         m_hWnd,
         rcView,
         _T("ErrorView"),
-        DXL_WS_CHILDWINDOW | ~WS_VISIBLE,
+        DXL_WS_CHILDWINDOW,
         WS_EX_CLIENTEDGE
     ) ; 
-    MainDoc.RegisterView(pErrorView) ; 
-    return 0 ; 
-}
-
-LRESULT CMainFrame::OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) 
-{
-    switch(HIWORD(wParam)) 
-    {
-        case DXL_ON_MENU :
-        {
-            OnMenu(uMsg, wParam, lParam) ; 
-            break ; 
-        }
-        case DXL_ON_ACCELERATOR :
-        {
-            OnAccelerator(uMsg, wParam, lParam) ; 
-            break ; 
-        }
-        default :
-        {
-            OnControl(uMsg, wParam, lParam) ; 
-            break ; 
-        }
-    }
+    MainDoc.RegisterView(_T("ErrorView"), pErrorView) ; 
     return 0 ; 
 }
 
@@ -90,36 +67,36 @@ LRESULT CMainFrame::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*
     return 0 ; 
 }
 
-void CMainFrame::OnMenu(UINT uMSg, WPARAM wParam, LPARAM lParam) 
+LRESULT CMainFrame::OnViewClassView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
 {
-    switch(LOWORD(wParam))
+    SetCurrentView(_T("ClassView")) ; 
+    return 0 ;
+}
+
+LRESULT CMainFrame::OnViewTerminalView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
+{
+    SetCurrentView(_T("TerminalView")) ; 
+    return 0 ; 
+}
+
+LRESULT CMainFrame::OnErrorView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
+{
+    SetCurrentView(_T("ErrorView")) ; 
+    return 0 ; 
+}
+
+void CMainFrame::SetCurrentView(const CString &strViewKey) 
+{
+    CDocument &MainDoc = CMainApp::GetInstance().GetMainDocument() ; 
+    CView *pPrevView = m_pCurrentView ; 
+    m_pCurrentView = MainDoc.GetView(strViewKey) ; 
+    if(pPrevView == m_pCurrentView)
     {
-        case ID_VIEW_CLASSVIEW :
-        {
-            break ; 
-        }
-        case ID_VIEW_TERMINALVIEW :
-        {
-            break ; 
-        }
-        case ID_VIEW_ERRORVIEW :
-        {
-            break ; 
-        }
-        default :
-        {
-            break ; 
-        } 
+        return ; 
+    }
+    m_pCurrentView->ShowWindow(SW_SHOW) ; 
+    if(pPrevView != nullptr)
+    {
+        pPrevView->ShowWindow(SW_HIDE) ; 
     }
 }
-
-void CMainFrame::OnAccelerator(UINT uMSg, WPARAM wParam, LPARAM lParam) 
-{
-
-}
-
-void CMainFrame::OnControl(UINT uMsg, WPARAM wParam, LPARAM lParam) 
-{
-    
-}
-
