@@ -1,24 +1,30 @@
 #include "pch.h"
-#include "Resource.h"
 #include "MainApp.h"
 
 static CMainApp *g_pMainApp = nullptr ; 
 
 CMainApp::CMainApp()
 {
-
+    m_hMainMenu = ::LoadMenu(_AtlBaseModule.GetModuleInstance(), MAKEINTRESOURCE(IDR_MAIN_MENU)) ; 
 }
 
 CMainApp::~CMainApp()
 {
-
+    ::DestroyMenu(m_hMainMenu) ;
 }
 
 int CMainApp::Run(HINSTANCE hInstance, int nCmdShow)
 {
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_ATLPROJECT)) ;
     MSG msg ;
-    m_MainFrame.Create(NULL, NULL, _T("ATLProject"), WS_OVERLAPPEDWINDOW, 0) ; 
+    m_MainFrame.Create(
+        NULL, 
+        NULL,
+        _T("App"), 
+        WS_OVERLAPPEDWINDOW,
+        NULL,
+        m_hMainMenu
+    ) ; 
     m_MainFrame.ShowWindow(nCmdShow) ; 
     m_MainFrame.CenterWindow() ; 
     m_MainFrame.UpdateWindow() ; 
@@ -35,7 +41,7 @@ int CMainApp::Run(HINSTANCE hInstance, int nCmdShow)
 
 CDocument &CMainApp::GetMainDocument()
 {
-    return m_mainDocument ; 
+    return m_MainDoc ; 
 }
 
 //      static 

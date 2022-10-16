@@ -4,7 +4,6 @@
 class CSubject
 {
     public :
-        CSubject() { }  ;
         virtual ~CSubject() { } ; 
     public :
         virtual void RegisterView(CView *pView) = 0 ;

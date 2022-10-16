@@ -5,7 +5,8 @@
 class CMainFrame : public CWindowImpl<CMainFrame> 
 {
     private :
-        CView m_currentView ; 
+        CView *m_pCurrentView ; 
+        HMENU m_hMainMemu ; 
     public :
         CMainFrame() ; 
         ~CMainFrame() ; 
@@ -23,8 +24,9 @@ class CMainFrame : public CWindowImpl<CMainFrame>
         LRESULT OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
         LRESULT OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
         LRESULT OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
-    public :
-       virtual void OnFinalMessage(HWND hWnd) override ; 
-        
+    public :    
+        void OnMenu(UINT uMSg, WPARAM wParam, LPARAM lParam) ; 
+        void OnAccelerator(UINT uMSg, WPARAM wParam, LPARAM lParam) ; 
+        void OnControl(UINT uMsg, WPARAM wParam, LPARAM lParam) ;  
 } ;
 

@@ -6,7 +6,7 @@
 class CDocument : public CSubject
 {
     private :
-        CAutoPtrList<CView> m_views ; 
+        CAtlList<CView *> m_Views ; 
         CContent m_Content ; 
     public :
         CDocument() ; 
@@ -17,6 +17,12 @@ class CDocument : public CSubject
         virtual void UpdateView() override ; 
     public :
         void LoadFileContent() ; 
-        CContent &GetContent() { return m_Content ; }
+        inline CContent &GetContent() ;
 } ;
+
+inline CContent &CDocument::GetContent() 
+{
+    return m_Content ; 
+}
+
 

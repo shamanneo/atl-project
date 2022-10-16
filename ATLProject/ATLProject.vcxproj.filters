@@ -48,9 +48,6 @@
     <ClInclude Include="View.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TestView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Document.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -62,6 +59,18 @@
     </ClInclude>
     <ClInclude Include="Content.h">
       <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TerminalView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorView.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +89,6 @@
     <ClCompile Include="View.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Document.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -94,6 +100,15 @@
     </ClCompile>
     <ClCompile Include="Content.cpp">
       <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TerminalView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorView.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

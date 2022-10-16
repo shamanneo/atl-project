@@ -6,7 +6,8 @@ class CMainApp
 {
     private :
         CMainFrame m_MainFrame ; 
-        CDocument m_mainDocument ; 
+        CDocument m_MainDoc ; 
+        HMENU m_hMainMenu ; 
     public :
         CMainApp() ; 
         ~CMainApp() ; 

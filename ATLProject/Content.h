@@ -5,7 +5,16 @@ class CContent
     private :
         CString m_strText ;
     public :
-        const CString &GetText() { return m_strText ; }
-        void SetText(const CString &strText) { m_strText = strText ; }
+        inline const CString &GetText() const ; 
+        inline void SetText(const CString &strText) ; 
 } ;
 
+inline const CString &CContent::GetText() const 
+{
+    return m_strText ; 
+}
+
+inline void CContent::SetText(const CString &strText) 
+{
+    m_strText = strText ; 
+}
