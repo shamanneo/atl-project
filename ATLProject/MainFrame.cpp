@@ -49,6 +49,16 @@ LRESULT CMainFrame::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHan
         WS_EX_CLIENTEDGE
     ) ; 
     MainDoc.RegisterView(_T("ErrorView"), pErrorView) ;
+    CRect rcButton { 200, 200, 100, 30 } ; 
+    HWND hWndButton = ::CreateWindow(
+        _T("button"), 
+        _T("Run"), 
+        DXL_WS_CHILDWINDOW | WS_VISIBLE | BS_PUSHBUTTON, 
+        200, 200, 100, 30,
+        m_hWnd,
+        reinterpret_cast<HMENU>(IDC_RUN_BUTTON),
+        _AtlBaseModule.GetModuleInstance(), 
+        nullptr) ; 
     return 0 ; 
 }
 
@@ -79,6 +89,11 @@ LRESULT CMainFrame::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*
     return 0 ; 
 }
 
+LRESULT CMainFrame::OnFileExit(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
+{
+    return 0 ; 
+}
+
 LRESULT CMainFrame::OnViewClassView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
 {
     ShowCurrentView(_T("ClassView")) ; 
@@ -94,6 +109,12 @@ LRESULT CMainFrame::OnViewTerminalView(WORD wNotifyCode, WORD wID, HWND hWndCtl,
 LRESULT CMainFrame::OnErrorView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
 {
     ShowCurrentView(_T("ErrorView")) ; 
+    return 0 ; 
+}
+
+LRESULT CMainFrame::OnRunButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
+{
+
     return 0 ; 
 }
 

@@ -12,6 +12,8 @@
 #define IDI_SMALL                       108
 #define IDC_ATLPROJECT                  109
 #define IDR_MAIN_MENU                   110
+#define ID_FILE_EXIT                    111
+#define IDC_RUN_BUTTON                  112
 #define IDR_MAINFRAME                   128
 #define ID_VIEW_CLASSVIEW               32771
 #define ID_VIEW_TERMINALVIEW            32772
@@ -27,6 +29,6 @@
 #define _APS_NEXT_RESOURCE_VALUE        129
 #define _APS_NEXT_COMMAND_VALUE         32775
 #define _APS_NEXT_CONTROL_VALUE         1000
-#define _APS_NEXT_SYMED_VALUE           111
+#define _APS_NEXT_SYMED_VALUE           113
 #endif
 #endif

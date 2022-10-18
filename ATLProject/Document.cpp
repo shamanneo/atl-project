@@ -24,13 +24,13 @@ void CDocument::UnregisterView(const CString &strKey)
     m_Views.RemoveKey(strKey) ; 
 }
 
-void CDocument::UpdateView(UINT nWidth, UINT nHeight) 
+void CDocument::UpdateView(const UINT nMainFrameWidth, const UINT nMainFrameHeight) 
 {
     POSITION pos = m_Views.GetStartPosition() ; 
     while(pos != NULL)
     {
         CView *pView = m_Views.GetNextValue(pos) ; 
-        pView->SetWindowPos(NULL, 0, 0, nWidth / 5, nHeight, 
+        pView->SetWindowPos(NULL, 0, 0, nMainFrameWidth / 5, nMainFrameHeight, 
             SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE) ; 
         pView->InvalidateRect(nullptr) ; 
         pView->UpdateWindow() ; 

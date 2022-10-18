@@ -14,7 +14,7 @@ class CDocument : public CSubject
     public :
         virtual void RegisterView(const CString &strKey, CView *pView) override ; 
         virtual void UnregisterView(const CString &strKey) override ; 
-        virtual void UpdateView(UINT nWidth, UINT nHeight) override ; 
+        virtual void UpdateView(const UINT nMainFrameWidth, const UINT nMainFrameHeight) override ; 
     public :
         void LoadFileContent() ; 
         inline CContent &GetContent() ;
