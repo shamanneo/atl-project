@@ -19,13 +19,15 @@ class CMainFrame : public CWindowImpl<CMainFrame>
             COMMAND_ID_HANDLER(ID_VIEW_TERMINALVIEW, OnViewTerminalView)
             COMMAND_ID_HANDLER(ID_VIEW_ERRORVIEW, OnErrorView)
             MESSAGE_HANDLER(WM_PAINT, OnPaint) 
+            MESSAGE_HANDLER(WM_SIZE, OnSize) 
             MESSAGE_HANDLER(WM_DESTROY, OnDestroy) 
         END_MSG_MAP() 
     public : // Main Message Handler
         LRESULT OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
         LRESULT OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
+        LRESULT OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
         LRESULT OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled) ;
-    public : // Menu Handler
+    public : // Main Menu Handler
         LRESULT OnViewClassView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) ; 
         LRESULT OnViewTerminalView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) ; 
         LRESULT OnErrorView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) ; 

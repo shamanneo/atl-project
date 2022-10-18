@@ -48,7 +48,7 @@ LRESULT CMainFrame::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHan
         DXL_WS_CHILDWINDOW,
         WS_EX_CLIENTEDGE
     ) ; 
-    MainDoc.RegisterView(_T("ErrorView"), pErrorView) ; 
+    MainDoc.RegisterView(_T("ErrorView"), pErrorView) ;
     return 0 ; 
 }
 
@@ -58,6 +58,18 @@ LRESULT CMainFrame::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHand
     HDC hDC = BeginPaint(&ps) ; 
 
     EndPaint(&ps) ; 
+    return 0 ; 
+}
+
+LRESULT CMainFrame::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled)
+{
+    if(m_pCurrentView != nullptr)
+    {
+        UINT nWidth = LOWORD(lParam) ; 
+        UINT nHeight = HIWORD(lParam) ; 
+        m_pCurrentView->SetWindowPos(NULL, 0, 0, nWidth / 5, nHeight, 
+            SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE) ; 
+    }
     return 0 ; 
 }
 
