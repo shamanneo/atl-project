@@ -32,6 +32,6 @@ class CMainFrame : public CWindowImpl<CMainFrame>
         LRESULT OnViewTerminalView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) ; 
         LRESULT OnErrorView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) ; 
     public :
-        void SetCurrentView(const CString &strViewKey) ; 
+        void ShowCurrentView(const CString &strViewKey) ; 
 } ;
 

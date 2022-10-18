@@ -65,10 +65,10 @@ LRESULT CMainFrame::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandl
 {
     if(m_pCurrentView != nullptr)
     {
+        CDocument &MainDoc = CMainApp::GetInstance().GetMainDocument() ;
         UINT nWidth = LOWORD(lParam) ; 
         UINT nHeight = HIWORD(lParam) ; 
-        m_pCurrentView->SetWindowPos(NULL, 0, 0, nWidth / 5, nHeight, 
-            SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE) ; 
+        MainDoc.UpdateView(nWidth, nHeight) ; 
     }
     return 0 ; 
 }
@@ -81,23 +81,23 @@ LRESULT CMainFrame::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*
 
 LRESULT CMainFrame::OnViewClassView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
 {
-    SetCurrentView(_T("ClassView")) ; 
+    ShowCurrentView(_T("ClassView")) ; 
     return 0 ;
 }
 
 LRESULT CMainFrame::OnViewTerminalView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
 {
-    SetCurrentView(_T("TerminalView")) ; 
+    ShowCurrentView(_T("TerminalView")) ; 
     return 0 ; 
 }
 
 LRESULT CMainFrame::OnErrorView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
 {
-    SetCurrentView(_T("ErrorView")) ; 
+    ShowCurrentView(_T("ErrorView")) ; 
     return 0 ; 
 }
 
-void CMainFrame::SetCurrentView(const CString &strViewKey) 
+void CMainFrame::ShowCurrentView(const CString &strViewKey) 
 {
     CDocument &MainDoc = CMainApp::GetInstance().GetMainDocument() ; 
     CView *pPrevView = m_pCurrentView ; 

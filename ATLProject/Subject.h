@@ -8,6 +8,6 @@ class CSubject
     public :
         virtual void RegisterView(const CString &strKey, CView *pView) = 0 ;
         virtual void UnregisterView(const CString &strKey) = 0 ; 
-        virtual void UpdateView() = 0 ;
+        virtual void UpdateView(UINT nWidth, UINT nHeight) = 0 ;
 } ;
 

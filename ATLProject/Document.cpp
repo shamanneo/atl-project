@@ -24,14 +24,16 @@ void CDocument::UnregisterView(const CString &strKey)
     m_Views.RemoveKey(strKey) ; 
 }
 
-void CDocument::UpdateView() 
+void CDocument::UpdateView(UINT nWidth, UINT nHeight) 
 {
     POSITION pos = m_Views.GetStartPosition() ; 
     while(pos != NULL)
     {
-        HWND hWnd = m_Views.GetNextValue(pos)->m_hWnd ; 
-        ::InvalidateRect(hWnd, nullptr, TRUE) ; 
-        ::UpdateWindow(hWnd) ; 
+        CView *pView = m_Views.GetNextValue(pos) ; 
+        pView->SetWindowPos(NULL, 0, 0, nWidth / 5, nHeight, 
+            SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE) ; 
+        pView->InvalidateRect(nullptr) ; 
+        pView->UpdateWindow() ; 
     }
 }
 
@@ -49,7 +51,7 @@ void CDocument::LoadFileContent()
         {
             CString strText { szBuffer } ;
             m_Content.SetText(strText) ;
-            UpdateView() ; 
+            // UpdateView() ; 
         }
     }
     else 
