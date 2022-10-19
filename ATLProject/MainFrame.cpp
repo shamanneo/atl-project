@@ -114,7 +114,14 @@ LRESULT CMainFrame::OnErrorView(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &
 
 LRESULT CMainFrame::OnRunButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled) 
 {
-
+    int nMonitorCount = ::GetSystemMetrics(SM_CMONITORS) ; 
+    // The user is using multiple display monitors.
+    if(nMonitorCount != 1)
+    {
+        DISPLAY_DEVICE DisplayDevice ; 
+        ZeroMemory(&DisplayDevice, sizeof(DisplayDevice)) ;
+        DisplayDevice.cb = sizeof(DisplayDevice) ; 
+    }
     return 0 ; 
 }
 
