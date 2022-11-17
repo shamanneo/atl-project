@@ -1,4 +1,4 @@
-# ATLProject
+# atl-project
 
 Default Document-View Architecture desktop application with ATL.
 
